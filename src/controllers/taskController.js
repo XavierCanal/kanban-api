@@ -38,26 +38,30 @@ const getAllTasks = (req, res) => {
     const { body } = req;
   
     if (
-      !body.username ||
-      !body.fullName 
+      !body.user ||
+      !body.title ||
+      !body.description ||
+      !body.status
     ) {
       res.status(400).send({
         status: "FAILED",
         data: {
           error:
-            "One of the following keys is missing or is empty in request body: 'id', 'username', 'fullName'",
+            "One of the following keys is missing or is empty in request body: 'user', 'title', 'description', 'status'",
         },
       });
     }
   
-    const newUser = {
-      username: body.username,
-      fullName: body.fullName
+    const newTask = {
+      user: body.user,
+      title: body.title,
+      description: body.description,
+      status: body.status
     };
   
     try {
-      const createdUser = userService.createNewUser(newUser);
-      res.status(201).send({ status: "OK", data: createdUser });
+      const createdTask = taskService.createNewTask(newTask);
+      res.status(201).send({ status: "OK", data: createdTask });
     } catch (error) {
       res
         .status(error?.status || 500)
@@ -65,9 +69,56 @@ const getAllTasks = (req, res) => {
     }
   };
 
+  const updateOneTask = (req, res) => {
+    const {
+      body,
+      params: { taskName },
+    } = req;
+  
+    if (!taskName) {
+      res.status(400).send({
+        status: "FAILED",
+        data: { error: "Parameter ':productName' can not be empty" },
+      });
+    }
+  
+    try {
+      const updatedTask = taskService.updateOneTask(taskName, body);
+      res.send({ status: "OK", data: updatedTask });
+    } catch (error) {
+      res
+        .status(error?.status || 500)
+        .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+  };
+
+  const deleteOneTask = (req, res) => {
+    const {
+      params: { taskName },
+    } = req;
+  
+    if (!taskName) {
+      res.status(400).send({
+        status: "FAILED",
+        data: { error: "Parameter ':taskName' can not be empty" },
+      });
+    }
+  
+    try {
+      taskService.deleteOneTask(taskName);
+      res.status(204).send({ status: "OK" });
+    } catch (error) {
+      res
+        .status(error?.status || 500)
+        .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+  };
+
   module.exports = {
     getAllTasks,
     getOneTask,
-    createNewTask
+    createNewTask,
+    updateOneTask,
+    deleteOneTask
   };
   

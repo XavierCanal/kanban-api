@@ -3,7 +3,7 @@ const { v4: uuid } = require("uuid");
 
 const getAllUsers = () => {
     try {
-      const allUsers = User.getAllUsers(filterParams);
+      const allUsers = User.getAllUsers();
       return allUsers;
     } catch (error) {
       throw error;
@@ -25,7 +25,17 @@ const getAllUsers = () => {
     }
   };
 
+  const getTasksFromUser = (username, status, date) => {
+    try {
+      const tasks = User.getTasksFromUser(username, status, date);
+      return tasks;
+    } catch (error) {
+      throw error;
+    }
+  };
+
     module.exports = {
         getAllUsers,
-        createNewUser
+        createNewUser,
+        getTasksFromUser
     }

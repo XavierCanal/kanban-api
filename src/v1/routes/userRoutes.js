@@ -6,6 +6,7 @@ const router = express.Router();
 router
   .get("/", userController.getAllUsers)
   .post("/", userController.createNewUser)
+  .get("/:username/tasks", userController.getTasksFromUser)
 //   .get("/:productName", productController.getOneProduct)
 //   
 //   .patch("/:productName", productController.updateOneProduct)

@@ -42,8 +42,33 @@ const getAllUsers = (req, res) => {
     }
   };
 
+  const getTasksFromUser = (req, res) => {
+    const {
+      params: { username },
+    } = req;
+    const status = req.query.status;
+    const date = req.query.date;
+    if (!username) {
+      res.status(400).send({
+        status: "FAILED",
+        data: { error: "Parameter ':username' can not be empty" },
+      });
+      return;
+    }
+  
+    try {
+      const tasks = userService.getTasksFromUser(username, status, date);
+      res.send({ status: "OK", data: tasks });
+    } catch (error) {
+      res
+        .status(error?.status || 500)
+        .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+  };
+
   module.exports = {
     getAllUsers,
-    createNewUser
+    createNewUser,
+    getTasksFromUser
   };
   
