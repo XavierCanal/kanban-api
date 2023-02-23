@@ -1,7 +1,7 @@
 const express = require("express");
 const apicache = require("apicache");
-const userRoutes = require("./src/v1/routes/userRoutes");
-const taskRoutes = require("./src/v1/routes/taskRoutes");
+const userRoutes = require("./v1/routes/userRoutes");
+const taskRoutes = require("./v1/routes/taskRoutes");
 
 
 const app = express();
