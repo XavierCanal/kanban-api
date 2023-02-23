@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "username": "xcanal",
+      "fullName": "Xavier",
+      "createdAt": "4/20/2022, 2:21:56 PM",
+      "updatedAt": "4/20/2022, 2:21:56 PM"
+    },
+    {
+      "username": "mmorell",
+      "fullName": "Miquel",
+      "id": "4866f9a4-432a-4379-9a5e-524d6efde671",
+      "createdAt": "2/23/2023, 4:55:08 PM",
+      "updatedAt": "2/23/2023, 4:55:08 PM"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "user": "xcanal",
+      "title": "Task 1",
+      "description": "Description 1",
+      "createdAt": "4/20/2022, 2:21:56 PM",
+      "updatedAt": "4/20/2022, 2:21:56 PM"
+    },
+    {
+      "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "user": "xcanal",
+      "title": "Task 2",
+      "description": "Description 2",
+      "createdAt": "4/20/2022, 2:21:56 PM",
+      "updatedAt": "4/20/2022, 2:21:56 PM"
+    }
+  ]
+}

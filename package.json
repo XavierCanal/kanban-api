@@ -1,0 +1,27 @@
+{
+  "name": "kanban-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierCanal/kanban-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XavierCanal/kanban-api/issues"
+  },
+  "homepage": "https://github.com/XavierCanal/kanban-api#readme",
+  "dependencies": {
+    "apicache": "^1.6.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "uuid": "^9.0.0"
+  }
+}
